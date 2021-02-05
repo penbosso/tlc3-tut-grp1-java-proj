@@ -20,7 +20,8 @@ public class Student implements Nameable, HasLevel {
     @Override
     public String toString() {
         return "Student{" +
-                "grades=" + grades +
+                "name=" + getName() +
+                " grades=" + grades +
                 '}';
     }
 

@@ -1,7 +1,6 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-public class Register {
+public class Register implements Comparator<Student> {
     List<Student> studentList = new ArrayList<>();
 
     public Register(List<Student> students){
@@ -16,14 +15,18 @@ public class Register {
         return names;
     }
 
-    public List<String> getRegisterByLevel(Level studentLevel) {
-        List <String> namesOfStudentAtLevel = new ArrayList<>();
+    public Map<Level, List<Student>> getRegisterByLevel(Level studentLevel) {
+        List <Student> lisOfStudents = new ArrayList<>();
+        Map<Level, List<Student>> registerByLevel = new HashMap<>();
+
         for (Student student: studentList) {
             if(student.getLevel() == studentLevel) {
-                namesOfStudentAtLevel.add(student.getName());
+                lisOfStudents.add(student);
             }
         }
-        return namesOfStudentAtLevel;
+        registerByLevel.put(studentLevel, lisOfStudents);
+
+        return registerByLevel;
     }
 
     //returns a formatted string of all the names of the students grouped by their Level
@@ -48,5 +51,22 @@ public class Register {
             formatedStudentNamesbyLevel = Level100 + Level200 + Level300 + Level400;
 
         return formatedStudentNamesbyLevel;
+    }
+
+    @Override
+    public int compare(Student s1, Student s2) {
+        int nameCompare = s1.getName().compareTo(s2.getName());
+        int averageGradeCompare = (int) (s1.getAverageGrade() -s2.getAverageGrade());
+
+        if(nameCompare == 0) {
+            return averageGradeCompare;
+        } else {
+            return nameCompare;
+        }
+    }
+
+    public List<Student> sort() {
+        Collections.sort(this.studentList, new Register(studentList));
+        return this.studentList;
     }
 }

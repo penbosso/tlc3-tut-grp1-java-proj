@@ -12,6 +12,7 @@ public class Bag<E> {
             items.put(e, 1);
         }
     }
+
     // Remove an object
     public void remove (E e) {
         if(items.containsKey(e)) {
@@ -26,6 +27,6 @@ public class Bag<E> {
 
     // Clear list
     public void clear () {
-        items = new HashMap<>();
+        items.clear();
     }
 }

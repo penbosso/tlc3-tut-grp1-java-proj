@@ -4,12 +4,20 @@ import java.util.List;
 public class Main {
     public static void main(String[]args){
         Level l100 = Level.L100;
-        Student s1=new Student("Student 1", l100);
+        Student s1=new Student("Student eq", l100);
         s1.setGrade(56.9);
         s1.setGrade(45.09);
         s1.setGrade(82.34);
         s1.setGrade(67.23);
         s1.setGrade(76.00);
+
+        // 3rd student to test compare
+        Student s3=new Student("Student eq", l100);
+        s3.setGrade(56.9);
+        s3.setGrade(45.09);
+        s3.setGrade(82.34);
+        s3.setGrade(67.23);
+        s3.setGrade(70.00);
 
         System.out.println(s1);
         System.out.println(s1.getAverageGrade());
@@ -43,11 +51,18 @@ public class Main {
         List<Student> studentList = new ArrayList<>();
         studentList.add(s1);
         studentList.add(s2);
+        studentList.add(s3);
         studentList.add(ns);
         Register newRegister = new Register(studentList);
         // testing
         String report = newRegister.printReport();
         System.out.println(report);
+
+        List<Student> sortedStudent = newRegister.sort();
+
+        for(Student s : sortedStudent) {
+            System.out.println(s);
+        }
 
         System.out.println("The highest average is: " + l1.getHighestAverage());
     }

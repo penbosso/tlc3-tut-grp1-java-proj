@@ -27,6 +27,6 @@ public class BagOfLectures {
 
     // Clear bag
     public void clear () {
-        items = new HashMap<>();
+        items.clear();
     }
 }
