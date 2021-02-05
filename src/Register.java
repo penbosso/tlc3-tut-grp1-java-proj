@@ -26,6 +26,7 @@ public class Register {
         return namesOfStudentAtLevel;
     }
 
+    //returns a formatted string of all the names of the students grouped by their Level
     public String printReport() {
         String formatedStudentNamesbyLevel = "";
         String Level100 = "Level 100: \n";
