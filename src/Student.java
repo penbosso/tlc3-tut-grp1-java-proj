@@ -1,8 +1,12 @@
 import java.util.*;
-public class Student {
+public class Student implements Nameable {
+    private String name;
     //creating a list for the student grades
-
     List<Double> grades = new ArrayList<>();
+
+    Student( String name) {
+        this.name = name;
+    }
 
     public void setGrade(Double grade) {
         this.grades.add(grade);
@@ -22,5 +26,10 @@ public class Student {
             total = total + grades.get(i);
         }
         return total / grades.size();
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
     }
 }
