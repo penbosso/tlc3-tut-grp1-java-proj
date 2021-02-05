@@ -1,6 +1,10 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[]args){
-        Student s1=new Student("Student 1");
+        Level l100 = Level.L100;
+        Student s1=new Student("Student 1", l100);
         s1.setGrade(56.9);
         s1.setGrade(45.09);
         s1.setGrade(82.34);
@@ -10,14 +14,14 @@ public class Main {
         System.out.println(s1);
         System.out.println(s1.getAverageGrade());
 
-        Student s2= new Student("Student 2");
+        Student s2= new Student("Student 2", Level.L200);
         s2.setGrade(70.00);
         s2.setGrade(87.6);
         s2.setGrade(85.00);
 
 
         // naughty student test
-        Student ns= new NaughtyStudent("Naughty stud");
+        Student ns= new NaughtyStudent("Naughty stud", Level.L400);
         ns.setGrade(70.00);
         ns.setGrade(87.6);
         ns.setGrade(85.00);
@@ -34,6 +38,16 @@ public class Main {
         l1.enter(s2);
         // ading naughty stud to lecuture
         l1.enter(ns);
+
+        // test register's print report
+        List<Student> studentList = new ArrayList<>();
+        studentList.add(s1);
+        studentList.add(s2);
+        studentList.add(ns);
+        Register newRegister = new Register(studentList);
+        // testing
+        String report = newRegister.printReport();
+        System.out.println(report);
 
         System.out.println("The highest average is: " + l1.getHighestAverage());
     }

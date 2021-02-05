@@ -1,11 +1,13 @@
 import java.util.*;
-public class Student implements Nameable {
+public class Student implements Nameable, HasLevel {
     private String name;
+    private Level studentLevel;
     //creating a list for the student grades
     List<Double> grades = new ArrayList<>();
 
-    Student( String name) {
+    Student( String name, Level studentLevel) {
         this.name = name;
+        this.studentLevel = studentLevel;
     }
 
     public void setGrade(Double grade) {
@@ -31,5 +33,10 @@ public class Student implements Nameable {
     @Override
     public String getName() {
         return this.name;
+    }
+
+    @Override
+    public Level getLevel() {
+        return this.studentLevel;
     }
 }
