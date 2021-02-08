@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +16,7 @@ public class Lecture {
 
     @Override
     public String toString() {
-        return "Lecture{" +
+        return "model.Lecture{" +
                 "student=" + student +
                 '}';
     }

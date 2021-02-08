@@ -1,3 +1,5 @@
+package model;
+
 public class NaughtyStudent extends Student {
     public NaughtyStudent(String name, Level stuentLevel){
         super(name, stuentLevel);

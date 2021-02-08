@@ -1,3 +1,5 @@
+package model;
+
 public enum Level {
     L100,
     L200,

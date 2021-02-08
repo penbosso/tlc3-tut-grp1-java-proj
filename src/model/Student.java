@@ -1,3 +1,7 @@
+package model;
+
+import model.HasLevel;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +11,7 @@ public class Student implements Nameable, HasLevel {
     //creating a list for the student grades
     List<Double> grades = new ArrayList<>();
 
-    Student( String name, Level studentLevel) {
+    public Student( String name, Level studentLevel) {
         this.name = name;
         this.studentLevel = studentLevel;
     }
@@ -19,7 +23,7 @@ public class Student implements Nameable, HasLevel {
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "model.Student{" +
                 "name=" + getName() +
                 " grades=" + grades +
                 '}';

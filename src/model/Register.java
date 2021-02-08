@@ -1,4 +1,7 @@
+package model;
+
 import java.util.*;
+import Exception.StudentNotFoundException;
 
 public class Register implements Comparator<Student> {
     List<Student> studentList = new ArrayList<>();
@@ -29,13 +32,13 @@ public class Register implements Comparator<Student> {
         return registerByLevel;
     }
 
-    //returns a formatted string of all the names of the students grouped by their Level
+    //returns a formatted string of all the names of the students grouped by their model.Level
     public String printReport() {
         String formatedStudentNamesbyLevel = "";
-        String Level100 = "Level 100: \n";
-        String Level200 = "Level 200: \n";
-        String Level300 = "Level 300: \n";
-        String Level400 = "Level 400: \n";
+        String Level100 = "model.Level 100: \n";
+        String Level200 = "model.Level 200: \n";
+        String Level300 = "model.Level 300: \n";
+        String Level400 = "model.Level 400: \n";
 
         for (Student student: studentList) {
             if(student.getLevel() == Level.L100) {
@@ -68,5 +71,21 @@ public class Register implements Comparator<Student> {
     public List<Student> sort() {
         Collections.sort(this.studentList, new Register(studentList));
         return this.studentList;
+    }
+
+    public Student getStudentByName(String name) throws StudentNotFoundException {
+
+        if(this.getRegister().contains(name)){
+
+            for (Student s: this.studentList) {
+                if(s.getName().equals(name)){
+                    return  s;
+                }
+            }
+            return null;
+        }else{
+            System.out.println("No such student is found in the register");
+            throw new StudentNotFoundException();
+        }
     }
 }

@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import Exception.StudentNotFoundException;
+import model.*;
 
 public class Main {
     public static void main(String[]args){
@@ -65,6 +67,12 @@ public class Main {
         }
 
         System.out.println("The highest average is: " + l1.getHighestAverage());
+
+        try{
+            System.out.println(newRegister.getStudentByName("Naughty stud"));
+        }catch(StudentNotFoundException e){
+            e.printStackTrace();
+        }
     }
 
 }
