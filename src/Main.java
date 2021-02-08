@@ -64,6 +64,22 @@ public class Main {
             System.out.println(s);
         }
 
+        // implementing bags
+        BagOfLectures lectureBag = new BagOfLectures();
+        lectureBag.add(l1);
+
+        BagOfStudents studentBag = new BagOfStudents();
+        studentBag.add(s1);
+        studentBag.add(ns);
+
+        Bag<Register> registerBag = new Bag<Register>();
+        registerBag.add(newRegister);
+
+        Bag<Student> studentBag1 = new Bag<>();
+        studentBag1.add(s1);
+
+        Bag<Lecture> lectureBag1 = new Bag<>();
+
         System.out.println("The highest average is: " + l1.getHighestAverage());
     }
 
