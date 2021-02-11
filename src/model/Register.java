@@ -1,9 +1,11 @@
 package model;
 
 import java.util.*;
+import java.util.stream.Collectors;
+
 import Exception.StudentNotFoundException;
 
-public class Register implements Comparator<Student> {
+public class Register {
     List<Student> studentList = new ArrayList<>();
 
     public Register(List<Student> students){
@@ -11,25 +13,15 @@ public class Register implements Comparator<Student> {
     }
 
     public List<String> getRegister(){
-        List <String> names = new ArrayList<>();
-        for (Nameable student: studentList) {
-            names.add(student.getName());
-        }
-        return names;
+        return this.studentList.stream()
+                .map(Student::getName)
+                .collect(Collectors.toList());
     }
 
     public Map<Level, List<Student>> getRegisterByLevel(Level studentLevel) {
-        List <Student> lisOfStudents = new ArrayList<>();
-        Map<Level, List<Student>> registerByLevel = new HashMap<>();
-
-        for (Student student: studentList) {
-            if(student.getLevel() == studentLevel) {
-                lisOfStudents.add(student);
-            }
-        }
-        registerByLevel.put(studentLevel, lisOfStudents);
-
-        return registerByLevel;
+        return this.studentList.stream()
+                .filter(student -> student.getLevel()==studentLevel)
+                .collect(Collectors.groupingBy(Student::getLevel));
     }
 
     //returns a formatted string of all the names of the students grouped by their model.Level
@@ -56,21 +48,10 @@ public class Register implements Comparator<Student> {
         return formatedStudentNamesbyLevel;
     }
 
-    @Override
-    public int compare(Student s1, Student s2) {
-        int nameCompare = s1.getName().compareTo(s2.getName());
-        int averageGradeCompare = (int) (s1.getAverageGrade() -s2.getAverageGrade());
-
-        if(nameCompare == 0) {
-            return averageGradeCompare;
-        } else {
-            return nameCompare;
-        }
-    }
-
     public List<Student> sort() {
-        Collections.sort(this.studentList, new Register(studentList));
-        return this.studentList;
+       return this.studentList.stream()
+               .sorted(Comparator.comparing(Student::getName).thenComparing(Student::getAverageGrade))
+               .collect(Collectors.toList());
     }
 
     public Student getStudentByName(String name) throws StudentNotFoundException {

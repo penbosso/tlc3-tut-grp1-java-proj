@@ -61,11 +61,8 @@ public class Main {
         System.out.println(report);
 
         List<Student> sortedStudent = newRegister.sort();
-
-        for(Student s : sortedStudent) {
-            System.out.println(s);
-        }
-
+        sortedStudent.forEach(System.out::println);
+        System.out.println(newRegister.getRegisterByLevel(Level.L100));
         System.out.println("The highest average is: " + l1.getHighestAverage());
 
         try{
